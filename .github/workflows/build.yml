@@ -19,8 +19,6 @@ jobs:
           cache: "npm"
       - run: npm ci
       - run: npm run build
-      - uses: ad-m/github-push-action@master
+      - uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: deploy
-          directory: dist
+          folder: dist
