@@ -34,9 +34,9 @@ async function handleGenerateNextPost(): Promise<void> {
   } catch (e: any) {
     let errorMessage = "An error occurred while calculating the next post.";
     if (e.stack) {
-      errorMessage += `\n${ e.stack}`;
+      errorMessage += `\n${e.stack}`;
     } else {
-      errorMessage += `\n${ e}`;
+      errorMessage += `\n${e}`;
     }
 
     toastify({
@@ -49,7 +49,6 @@ async function handleGenerateNextPost(): Promise<void> {
     toastify({
       text: "The next post could not be calculated. Check the console for more information.",
     }).showToast();
-
   } else {
     const textareaElement = document.getElementById(
       "messageText"
@@ -68,15 +67,14 @@ function main(): void {
       let errorMessage =
         "An error occurred while trying to determine the callback for handing the next post.";
       if (e.stack) {
-        errorMessage += `\n${ e.stack}`;
+        errorMessage += `\n${e.stack}`;
       } else {
-        errorMessage += `\n${ e}`;
+        errorMessage += `\n${e}`;
       }
 
       toastify({
         text: errorMessage,
       }).showToast();
-
     });
   });
   button.innerText = "Calculate Next Post";
