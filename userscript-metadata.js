@@ -11,6 +11,7 @@ console.log(
 // @run-at       load
 // @source       git+https://github.com/PythonCoderAS/mal-forum-thread-next-post.git
 // @supportURL   https://github.com/PythonCoderAS/mal-forum-thread-next-post/issues
+// @icon         https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://myanimelist.net&size=64
 // @version      ${packageData.version}
 // ==/UserScript==`
 )
