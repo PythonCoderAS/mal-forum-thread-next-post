@@ -1,13 +1,11 @@
 {
   "name": "mal-forum-thread-next-post",
   "version": "1.0.0",
-  "description": "A userscript for determing the next post in a counting game on the MyAnimeList forum games board.",
-  "main": "dist/index.js",
+  "description": "A userscript for determining the next post in a counting game on the MyAnimeList forum games board.",
   "type": "commonjs",
-  "types": "dist/index.d.ts",
+  "private": false,
   "scripts": {
-    "test": "mocha --require ts-node/register tests/**/*.test.ts",
-    "build": "tsc -b",
+    "build": "webpack && cat userscript-metadata.txt dist/script.user.js.pre > dist/script.user.js && rm dist/script.user.js.pre",
     "lint": "prettier --check . && eslint . --ext .ts",
     "lint-fix": "prettier --write . && eslint . --ext .ts --fix"
   },
@@ -26,10 +24,11 @@
     "eslint": "^8.21.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-pythoncoderas-combo": "^1.1.3",
+    "eslint-plugin-userscripts": "^0.2.8",
     "prettier": "^2.7.1",
-    "typescript": "^4.7.4"
-  },
-  "dependencies": {
-    "eslint-plugin-userscripts": "^0.2.8"
+    "ts-loader": "^9.3.1",
+    "typescript": "^4.7.4",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0"
   }
 }

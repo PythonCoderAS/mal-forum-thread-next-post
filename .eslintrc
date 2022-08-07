@@ -2,5 +2,9 @@
   "extends": [
     "pythoncoderas-combo",
     "plugin:userscripts/recommended"
-  ]
+  ],
+  "rules": {
+    "userscripts/filename-user": "off",
+    "userscripts/no-invalid-metadata": "off"
+  }
 }
