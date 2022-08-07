@@ -1,1 +1,1 @@
-export type TopicIDHandler = (topicId: number) => string | null;
+export type TopicIDHandler = (topicId: number) => Promise<string | null>;

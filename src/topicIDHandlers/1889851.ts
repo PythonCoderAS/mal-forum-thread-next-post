@@ -1,8 +1,9 @@
 import { getReplies } from "../utils";
 
-export default function handle1889851(): string | null {
+export default async function handle1889851(): Promise<string | null> {
   const replies = getReplies();
   if (!replies) {
+    console.log("Could not get the total replies from page HTML.")
     return null;
   }
 
