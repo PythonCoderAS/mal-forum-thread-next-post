@@ -14,7 +14,7 @@ const topicIdMap: Map<number, TopicIDHandler> = new Map([
   [1916230, postCountFormula((replies) => String((replies + 1 + 917) * 2))],
   [1821719, postCountFormula((replies) => String(replies + 1 + 542))],
   [1719728, postCountFormula((replies) => String(replies))],
-  [1457565, postCountFormula((replies) => String(replies + 1 + 546))],
+  [1457565, postCountFormula((replies) => String(replies + 1 + 6))],
   // For these two I have no idea how I came up with the formula. However, as a general rule of thumb, for threads
   // that restart once a certain number is reached, you need to use the modulo operator and then a ternary operator
   // to deal with the 0 case.
