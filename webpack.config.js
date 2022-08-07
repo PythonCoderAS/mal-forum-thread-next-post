@@ -16,7 +16,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js", ".css"],
+    extensions: [".tsx", ".ts", ".js", ".json", ".css"],
   },
   output: {
     filename: "script.user.js.pre",

@@ -2,7 +2,7 @@ import * as toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 
 import { TopicIDHandler } from "./types";
-import { postCountFormula } from "./utils";
+import { postCountFormula, useMod10Data } from "./utils";
 
 const topicIdMap: Map<number, TopicIDHandler> = new Map([
   [1889851, postCountFormula((replies) => String((replies % 10) + 1))],
@@ -18,27 +18,9 @@ const topicIdMap: Map<number, TopicIDHandler> = new Map([
   // For these two I have no idea how I came up with the formula. However, as a general rule of thumb, for threads
   // that restart once a certain number is reached, you need to use the modulo operator and then a ternary operator
   // to deal with the 0 case.
-  [
-    1209529,
-    postCountFormula((replies) => {
-      const nextPostNum = ((replies + 1) % 5) - 2;
-      return String(nextPostNum === 0 ? 5 : nextPostNum);
-    }),
-  ],
-  [
-    113300,
-    postCountFormula((replies) => {
-      const nextPostNum = ((replies + 1) % 5) - 1;
-      return String(nextPostNum === 0 ? 5 : nextPostNum);
-    }),
-  ],
-  [
-    199746,
-    postCountFormula((replies) => {
-      const nextPostNum = (replies + 7) % 10;
-      return String(nextPostNum === 0 ? 10 : nextPostNum);
-    }),
-  ],
+  [1209529, useMod10Data],
+  [113300, useMod10Data],
+  [199746, useMod10Data],
   [1959517, postCountFormula((replies) => String(replies + 2))],
   [1892107, postCountFormula((replies) => String(replies + 1 + 20000))],
   [1879712, postCountFormula((replies) => String(100001 - replies - 1))],
