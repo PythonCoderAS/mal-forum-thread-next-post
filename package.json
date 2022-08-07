@@ -13,6 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/PythonCoderAS/mal-forum-thread-next-post.git"
   },
+  "sideEffects": ["./src/index.ts"],
   "keywords": [],
   "author": "PythonCoderAS",
   "license": "MIT",

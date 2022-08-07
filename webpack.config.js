@@ -22,4 +22,7 @@ module.exports = {
     filename: "script.user.js.pre",
     path: path.resolve(__dirname, "dist"),
   },
+  optimization: {
+    usedExports: true,
+  }
 };
