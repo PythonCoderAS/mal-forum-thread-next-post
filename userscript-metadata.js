@@ -1,4 +1,4 @@
-const packageData = require('./package.json');
+const packageData = require("./package.json");
 console.log(
   `// ==UserScript==
 // @name         mal-forum-thread-next-post
@@ -14,4 +14,4 @@ console.log(
 // @icon         https://t3.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=http://myanimelist.net&size=64
 // @version      ${packageData.version}
 // ==/UserScript==`
-)
+);

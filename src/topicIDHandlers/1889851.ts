@@ -3,7 +3,7 @@ import { getReplies } from "../utils";
 export default async function handle1889851(): Promise<string | null> {
   const replies = getReplies();
   if (!replies) {
-    console.log("Could not get the total replies from page HTML.")
+    console.log("Could not get the total replies from page HTML.");
     return null;
   }
 
