@@ -1,4 +1,6 @@
-// ==UserScript==
+const packageData = require('./package.json');
+console.log(
+  `// ==UserScript==
 // @name         mal-forum-thread-next-post
 // @author       PythonCoderAS
 // @description  A userscript for determining the next post in a counting game on the MyAnimeList forum games board.
@@ -9,5 +11,6 @@
 // @run-at       load
 // @source       git+https://github.com/PythonCoderAS/mal-forum-thread-next-post.git
 // @supportURL   https://github.com/PythonCoderAS/mal-forum-thread-next-post/issues
-// @version      1.0.0
-// ==/UserScript==
+// @version      ${packageData.version}
+// ==/UserScript==`
+)

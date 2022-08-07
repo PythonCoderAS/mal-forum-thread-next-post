@@ -5,7 +5,7 @@
   "type": "commonjs",
   "private": false,
   "scripts": {
-    "build": "webpack && cat userscript-metadata.txt dist/script.user.js.pre > dist/script.user.js && rm dist/script.user.js.pre",
+    "build": "webpack && node userscript-metadata.js >> dist/script.user.js && cat dist/script.user.js.pre >> dist/script.user.js && rm dist/script.user.js.pre",
     "lint": "prettier --check . && eslint . --ext .ts",
     "lint-fix": "prettier --write . && eslint . --ext .ts --fix"
   },
