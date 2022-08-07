@@ -12,6 +12,29 @@ const topicIdMap: Map<number, TopicIDHandler> = new Map([
   // Since the gap is so large, instead of trying to find where it went wrong, it will be easier
   // to add a constant and continue the chain.
   [1916230, postCountFormula((replies) => String((replies + 1 + 917) * 2))],
+  [1821719, postCountFormula((replies) => String(replies + 1 + 542))],
+  [1719728, postCountFormula((replies) => String(replies))],
+  [1457565, postCountFormula((replies) => String(replies + 1 + 546))],
+  // For these two I have no idea how I came up with the formula. However, as a general rule of thumb, for threads
+  // that restart once a certain number is reached, you need to use the modulo operator and then a ternary operator
+  // to deal with the 0 case.
+  [1209529, postCountFormula((replies) => {
+    const nextPostNum = ((replies + 1) % 5) - 2;
+    return String(nextPostNum === 0 ? 5 : nextPostNum);
+  })],
+  [113300, postCountFormula((replies) => {
+    const nextPostNum = ((replies + 1) % 5) - 1;
+    return String(nextPostNum === 0 ? 5 : nextPostNum);
+  })],
+  [199746, postCountFormula((replies) => {
+    const nextPostNum = (replies + 7) % 10;
+    return String(nextPostNum === 0 ? 10 : nextPostNum);
+  })],
+  [1959517, postCountFormula((replies) => String(replies + 2))],
+  [1892107, postCountFormula((replies) => String(replies + 1 + 20000))],
+  [1879712, postCountFormula((replies) => String(100001 - replies - 1))],
+  [1377703, postCountFormula((replies) => String(replies + 1 + 700))],
+  [1538912, postCountFormula((replies) => String(9907 - replies - 1))],
 ]);
 
 async function handleGenerateNextPost(): Promise<void> {
