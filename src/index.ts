@@ -80,7 +80,7 @@ function main(): void {
     }).showToast();
     return;
   }
-  parentContainer.insertBefore(cancelButton, button);
+  parentContainer.insertBefore(button, cancelButton);
 }
 
 main();
