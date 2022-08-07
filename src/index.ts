@@ -10,7 +10,7 @@ const topicIdMap: Map<number, TopicIDHandler> = new Map([
 
 async function handleGenerateNextPost(): Promise<void> {
   const params = new URLSearchParams(document.location.search);
-  const topicIdStr = params.get("topicId");
+  const topicIdStr = params.get("topicid");
   if (topicIdStr === null) {
     toastify({
       text: "The thread topic ID was not found and the next post could not be calculated."
