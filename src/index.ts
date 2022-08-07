@@ -6,7 +6,12 @@ import { postCountFormula } from "./utils";
 
 const topicIdMap: Map<number, TopicIDHandler> = new Map([
   [1889851, postCountFormula((replies) => String((replies % 10) + 1))],
-  [1979992, postCountFormula((replies) => String(replies * 7))],
+  [1979992, postCountFormula((replies) => String((replies + 1) * 7))],
+  [1978072, postCountFormula((replies) => String((replies + 1) * 9))],
+  // I have *no* idea why the 917 constant is needed. There seems to be a gap of ~917 posts.
+  // Since the gap is so large, instead of trying to find where it went wrong, it will be easier
+  // to add a constant and continue the chain.
+  [1916230, postCountFormula((replies) => String((replies + 1 + 917) * 2))],
 ]);
 
 async function handleGenerateNextPost(): Promise<void> {
