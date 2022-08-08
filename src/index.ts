@@ -50,6 +50,9 @@ async function handleGenerateNextPost(): Promise<void> {
     return;
   }
 
+  toastify({
+    text: "Starting calculation of the next post.",
+  }).showToast();
   let nextPost: string | null | undefined;
   try {
     nextPost = await callback(topicId);
@@ -81,6 +84,9 @@ async function handleGenerateNextPost(): Promise<void> {
     ) as HTMLTextAreaElement;
     textareaElement.value = nextPost;
   }
+  toastify({
+    text: "Next post has been calculated.",
+  }).showToast();
 }
 
 function clickHandler(){
