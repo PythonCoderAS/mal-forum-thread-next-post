@@ -19,7 +19,10 @@ module.exports = {
     extensions: [".tsx", ".ts", ".js", ".json", ".css"],
   },
   output: {
-    filename: "script.user.js.pre",
+    filename: "script.user.pre.js",
     path: path.resolve(__dirname, "dist"),
   },
+  optimization: {
+    minimize: true
+  }
 };

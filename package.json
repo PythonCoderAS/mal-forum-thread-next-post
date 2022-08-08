@@ -1,11 +1,11 @@
 {
   "name": "mal-forum-thread-next-post",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "A userscript for determining the next post in a counting game on the MyAnimeList forum games board.",
   "type": "commonjs",
   "private": true,
   "scripts": {
-    "build": "webpack && node userscript-metadata.js >> dist/script.user.js && cat dist/script.user.js.pre >> dist/script.user.js && rm dist/script.user.js.pre",
+    "build": "webpack && node userscript-metadata.js > dist/script.user.js && tail -n 1 dist/script.user.pre.js >> dist/script.user.js && rm dist/script.user.pre.js*",
     "lint": "prettier --check . && eslint . --ext .ts",
     "lint-fix": "prettier --write . && eslint . --ext .ts --fix"
   },
