@@ -87,11 +87,43 @@ export function goToLatestPage(): boolean {
   return false;
 }
 
+export class ForumPostAuthor {
+  public post: ForumPost;
+  constructor(post: ForumPost) {
+    this.post = post;
+  }
+
+  getName(): string {
+    const authorElement = this.post.containerNode.querySelector(
+      'a[href^="/profile"] > strong'
+    ) as HTMLElement | null;
+    if (!authorElement) {
+      throw new Error("Could not find the author <strong> element.");
+    }
+
+    return authorElement.innerText || "Unknown Author";
+  }
+
+  getTitle(): string | null {
+    const node = this.post.containerNode.querySelector<HTMLLinkElement>('a[href^="/about.php?go=team"]')
+    if (!node) {
+      return null;
+    }
+    return node.innerText || null;
+  }
+
+  isActiveStaff(): boolean {
+    return this.getTitle() !== null;
+  }
+}
+
 export class ForumPost {
   public containerNode: HTMLDivElement;
+  private _author: ForumPostAuthor;
 
   constructor(containerNode: HTMLDivElement) {
     this.containerNode = containerNode;
+    this._author = new ForumPostAuthor(this);
   }
 
   getPostNumber(): number {
@@ -119,15 +151,8 @@ export class ForumPost {
     );
   }
 
-  getAuthor(): string {
-    const authorElement = this.containerNode.querySelector(
-      'a[href^="/profile"] > strong'
-    ) as HTMLElement | null;
-    if (!authorElement) {
-      throw new Error("Could not find the author <strong> element.");
-    }
-
-    return authorElement.innerText || "Unknown Author";
+  public get author(): ForumPostAuthor {
+    return this._author;
   }
 
   getBodyNode(): HTMLDivElement {
@@ -146,9 +171,14 @@ export class ForumPost {
   }
 }
 
+export function getForumPosts(): ForumPost[] {
+  const posts = document.querySelectorAll<HTMLDivElement>('div[id^="forumMsg"]');
+  return Array.from(posts).map((node) => new ForumPost(node));
+}
+
 export function getLatestForumPost(): ForumPost {
-  const posts = document.querySelectorAll('div[id^="forumMsg"]');
-  return new ForumPost(posts[posts.length - 1] as HTMLDivElement);
+  const posts = getForumPosts();
+  return posts[posts.length - 1];
 }
 
 /**

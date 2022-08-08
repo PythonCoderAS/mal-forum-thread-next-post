@@ -7,6 +7,9 @@ import {
   postCountFormula,
   useMod10Data,
 } from "./utils";
+import handle1994574 from "./topicIDHandlers/1994574";
+import handle1890222 from "./topicIDHandlers/1890222";
+import handle1985499 from "./topicIDHandlers/1985499";
 
 const topicIdMap: Map<number, TopicIDHandler> = new Map([
   [1889851, postCountFormula((replies) => String((replies % 10) + 1))],
@@ -37,6 +40,13 @@ const topicIdMap: Map<number, TopicIDHandler> = new Map([
   [1797078, postCountFormula((replies) => String(replies + 1 - 16 ))],
   // Technically replies + 1 - 1, but they cancel out
   [2028372, postCountFormula((replies) => String(replies))],
+  [1917728, postCountFormula((replies) => String(replies * 9))],
+  [1960504, postCountFormula((replies) => String(10003 - replies - 1))],
+  [1994574, handle1994574],
+  [1890222, handle1890222],
+  [71684, useMod10Data],
+  [1985499, handle1985499],
+
 
 ]);
 
