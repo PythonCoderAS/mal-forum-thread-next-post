@@ -2,7 +2,11 @@ import * as toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 
 import { TopicIDHandler } from "./types";
-import { firstNumberLatestPostFormula, postCountFormula, useMod10Data } from "./utils";
+import {
+  firstNumberLatestPostFormula,
+  postCountFormula,
+  useMod10Data,
+} from "./utils";
 
 const topicIdMap: Map<number, TopicIDHandler> = new Map([
   [1889851, postCountFormula((replies) => String((replies % 10) + 1))],
@@ -75,7 +79,7 @@ async function handleGenerateNextPost(): Promise<void> {
     toastify({
       text: "The next post could not be calculated. Check the console for more information.",
     }).showToast();
-  } else if (nextPost === undefined){
+  } else if (nextPost === undefined) {
     // A page load or some other event is occurring that will call this function again.
     return;
   } else {
@@ -84,12 +88,13 @@ async function handleGenerateNextPost(): Promise<void> {
     ) as HTMLTextAreaElement;
     textareaElement.value = nextPost;
   }
+
   toastify({
     text: "Next post has been calculated.",
   }).showToast();
 }
 
-function clickHandler(){
+function clickHandler() {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return handleGenerateNextPost().catch((e: any) => {
     let errorMessage =
@@ -126,17 +131,19 @@ function main(): void {
   parentContainer.insertBefore(button, cancelButton);
   const urlParams = new URLSearchParams(document.location.search);
   if (urlParams.has("_calculatePostIdRunOnPageLoad")) {
-    const title = document.querySelector('title')!.text;
+    const title = document.querySelector("title")!.text;
     const url = new URL(document.location.href);
-    const searchParams = url.searchParams;
+    const { searchParams } = url;
     searchParams.delete("_calculatePostIdRunOnPageLoad");
     url.search = searchParams.toString();
     history.replaceState(null, title, url.href);
     clickHandler().then(() => {
-      const quickReplyDiv = document.querySelector<HTMLDivElement>("div#quickReply")!;
-      const quickReplyButton = document.querySelector<HTMLLinkElement>("a#showQuickReply")!;
-      quickReplyButton.click()
-      quickReplyDiv.scrollIntoView()
+      const quickReplyDiv =
+        document.querySelector<HTMLDivElement>("div#quickReply")!;
+      const quickReplyButton =
+        document.querySelector<HTMLLinkElement>("a#showQuickReply")!;
+      quickReplyButton.click();
+      quickReplyDiv.scrollIntoView();
     });
   }
 }
