@@ -36,7 +36,7 @@ const topicIdMap: Map<number, TopicIDHandler> = new Map([
   [1166563, postCountFormula((replies) => String(replies + 1 + 10002))],
   [1797078, postCountFormula((replies) => String(replies + 1 - 16 ))],
   // Technically replies + 1 - 1, but they cancel out
-  [1797078, postCountFormula((replies) => String(replies))],
+  [2028372, postCountFormula((replies) => String(replies))],
 
 ]);
 
