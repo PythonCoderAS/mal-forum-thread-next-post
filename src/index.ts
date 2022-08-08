@@ -83,26 +83,28 @@ async function handleGenerateNextPost(): Promise<void> {
   }
 }
 
+function clickHandler(){
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return handleGenerateNextPost().catch((e: any) => {
+    let errorMessage =
+      "An error occurred while trying to determine the callback for handing the next post.";
+    if (e.stack) {
+      errorMessage += `\n${e.stack}`;
+    } else {
+      errorMessage += `\n${e}`;
+    }
+
+    toastify({
+      text: errorMessage,
+    }).showToast();
+  });
+}
+
 function main(): void {
   const button = document.createElement("button");
   button.type = "button";
   button.classList.add("btn-topic-normal");
-  button.addEventListener("click", () => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    handleGenerateNextPost().catch((e: any) => {
-      let errorMessage =
-        "An error occurred while trying to determine the callback for handing the next post.";
-      if (e.stack) {
-        errorMessage += `\n${e.stack}`;
-      } else {
-        errorMessage += `\n${e}`;
-      }
-
-      toastify({
-        text: errorMessage,
-      }).showToast();
-    });
-  });
+  button.addEventListener("click", clickHandler);
   button.innerText = "Calculate Next Post";
   const cancelButton = document.getElementById(
     "clearQuickReply"
@@ -124,7 +126,12 @@ function main(): void {
     searchParams.delete("_calculatePostIdRunOnPageLoad");
     url.search = searchParams.toString();
     history.replaceState(null, title, url.href);
-    handleGenerateNextPost();
+    clickHandler().then(() => {
+      const quickReplyDiv = document.querySelector<HTMLDivElement>("div#quickReply")!;
+      const quickReplyButton = document.querySelector<HTMLLinkElement>("a#showQuickReply")!;
+      quickReplyButton.click()
+      quickReplyDiv.scrollIntoView()
+    });
   }
 }
 

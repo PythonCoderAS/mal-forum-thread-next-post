@@ -56,7 +56,10 @@ export function goToLatestPage(): boolean {
       }).showToast();
       urlParams.set("show", String((highestPage - 1) * 50));
       urlParams.set("_calculatePostIdRunOnPageLoad", "true")
-      document.location.search = urlParams.toString();
+      const url = new URL(document.location.href);
+      url.search = urlParams.toString();
+      url.hash = "quickReply"
+      location.replace(url)
       return true;
     }
   }
