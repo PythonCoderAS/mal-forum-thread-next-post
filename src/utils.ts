@@ -40,7 +40,8 @@ export async function useMod10Data(topicId: number): TopicIDReturn {
 
   const postMappingsTyped: { [id: string]: PostMappingTopicData } =
     postMappings;
-  const lastDigit = String((replies + 1) % 10);
+  // Technically this calculates the last digit of the *next* post.
+  const lastDigit = String((replies + 2) % 10);
   const topicIdData: PostMappingTopicData | undefined =
     postMappingsTyped[String(topicId)];
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment -- Can't really have typescript know that something mod 10 to a string has 10 options.

@@ -18,7 +18,7 @@ const topicIdMap: Map<number, TopicIDHandler> = new Map([
   // I have *no* idea why the 917 constant is needed. There seems to be a gap of ~917 posts.
   // Since the gap is so large, instead of trying to find where it went wrong, it will be easier
   // to add a constant and continue the chain.
-  [1916230, postCountFormula((replies) => String((replies + 1 + 917) * 2))],
+  [1916230, postCountFormula((replies) => String((replies + 1 + 916) * 2))],
   [1821719, postCountFormula((replies) => String(replies + 1 + 542))],
   [1719728, postCountFormula((replies) => String(replies))],
   [1457565, postCountFormula((replies) => String(replies + 1 + 6))],
