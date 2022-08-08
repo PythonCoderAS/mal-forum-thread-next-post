@@ -2,7 +2,7 @@ import * as toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
 
 import { TopicIDHandler } from "./types";
-import { postCountFormula, useMod10Data } from "./utils";
+import { firstNumberLatestPostFormula, postCountFormula, useMod10Data } from "./utils";
 
 const topicIdMap: Map<number, TopicIDHandler> = new Map([
   [1889851, postCountFormula((replies) => String((replies % 10) + 1))],
@@ -28,7 +28,7 @@ const topicIdMap: Map<number, TopicIDHandler> = new Map([
   [1538912, postCountFormula((replies) => String(9907 - replies - 1))],
   [1931026, postCountFormula((replies) => String(replies + 1 + 16))],
   [1824920, postCountFormula((replies) => String(replies + 1 + 597613))],
-  
+  [1989661, firstNumberLatestPostFormula((replies) => String(replies + 1))],
 ]);
 
 async function handleGenerateNextPost(): Promise<void> {

@@ -1,3 +1,5 @@
+import * as toastify from 'toastify-js';
+
 import * as postMappings from "./postMappings.json";
 import { PostMappingTopicData } from "./types";
 
@@ -45,6 +47,9 @@ export function goToLatestPage(){
     const urlParams = new URLSearchParams(document.location.search);
     const currentOffset = parseInt(urlParams.get("show") || "0", 10);
     if (currentOffset < (highestPage - 1) * 50){
+      toastify({
+        text: "Calculating the post requires going to the latest page. Curently navigating to the last page."
+      }).showToast();
       urlParams.set("show", String((highestPage - 1) * 50));
       document.location.search = urlParams.toString();
     }
