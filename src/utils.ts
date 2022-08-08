@@ -86,7 +86,7 @@ export function firstNumberLatestPostFormula(
       return null;
     }
 
-    return calculator(num + 1);
+    return calculator(num);
   };
 }
 
