@@ -26,6 +26,9 @@ const topicIdMap: Map<number, TopicIDHandler> = new Map([
   [1879712, postCountFormula((replies) => String(100001 - replies - 1))],
   [1377703, postCountFormula((replies) => String(replies + 1 + 700))],
   [1538912, postCountFormula((replies) => String(9907 - replies - 1))],
+  [1931026, postCountFormula((replies) => String(replies + 1 + 16))],
+  [1824920, postCountFormula((replies) => String(replies + 1 + 597613))],
+  
 ]);
 
 async function handleGenerateNextPost(): Promise<void> {
