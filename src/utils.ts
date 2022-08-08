@@ -1,7 +1,7 @@
 import * as toastify from 'toastify-js';
 
 import * as postMappings from "./postMappings.json";
-import { PostMappingTopicData } from "./types";
+import { PostMappingTopicData, TopicIDReturn } from "./types";
 
 export function getReplies(): number | null {
   const inputElement = document.getElementById(
@@ -19,7 +19,7 @@ export function getReplies(): number | null {
  */
 export function postCountFormula(
   calculator: (nextPostNum: number) => string
-): () => Promise<string | null> {
+): () => TopicIDReturn {
   return async () => {
     const replies = getReplies();
     if (!replies) {
@@ -33,7 +33,11 @@ export function postCountFormula(
 
 const pageRegex = /Pages \((\d+)\)/
 
-export function goToLatestPage(){
+/**
+ * Go to the latest page of the forum.
+ * @return True if a navigation did occur, false otherwise.
+ */
+export function goToLatestPage(): boolean {
   const postReplyButton = document.querySelector('a[href^="?action=message&topic_id="]');
   if (!postReplyButton) {
     throw new Error("Could not find the post reply button.");
@@ -51,9 +55,12 @@ export function goToLatestPage(){
         text: "Calculating the post requires going to the latest page. Curently navigating to the last page."
       }).showToast();
       urlParams.set("show", String((highestPage - 1) * 50));
+      urlParams.set("_calculatePostIdRunOnPageLoad", "true")
       document.location.search = urlParams.toString();
+      return true;
     }
   }
+  return false;
 }
 
 /**
@@ -63,9 +70,12 @@ export function goToLatestPage(){
  */
 export function firstNumberLatestPostFormula(
   calculator: (firstNumberFound: number) => string
-): () => Promise<string | null> {
+): () => Promise<string | null | undefined> {
   return async () => {
-    goToLatestPage();
+    const changedPage = goToLatestPage();
+    if (changedPage){
+      return;
+    }
     const post = getLatestForumPost();
     const num = post.getFirstNumber();
     if (num === null) {
@@ -77,7 +87,7 @@ export function firstNumberLatestPostFormula(
   };
 }
 
-export async function useMod10Data(topicId: number): Promise<string | null> {
+export async function useMod10Data(topicId: number): TopicIDReturn {
   const replies = getReplies();
   if (!replies) {
     console.log("Could not get the total replies from page HTML.");
@@ -127,7 +137,7 @@ export class ForumPost {
   }
 
   getBodyNode(): HTMLDivElement {
-    return this.containerNode.querySelector('div[id^="message"]') as HTMLDivElement;
+    return this.containerNode.querySelector('td.forum_boardrow1 div[id^="message"]') as HTMLDivElement;
   }
 
   getBodyText(): string {

@@ -1,4 +1,11 @@
-export type TopicIDHandler = (topicId: number) => Promise<string | null>;
+export type TopicIDReturn = Promise<string | null | undefined>;
+/**
+ * The handler for a topic ID.
+ * @return A string for the next post, `null` if the next post could not be calculated,
+ * and undefined if some event occurred that will call the function a second time.
+ */
+export type TopicIDHandler = (topicId: number) => TopicIDReturn;
+
 export type PostMappingTopicData = {
   "0": number;
   "1": number;

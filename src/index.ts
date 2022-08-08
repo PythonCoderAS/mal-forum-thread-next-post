@@ -50,7 +50,7 @@ async function handleGenerateNextPost(): Promise<void> {
     return;
   }
 
-  let nextPost: string | null;
+  let nextPost: string | null | undefined;
   try {
     nextPost = await callback(topicId);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -72,6 +72,9 @@ async function handleGenerateNextPost(): Promise<void> {
     toastify({
       text: "The next post could not be calculated. Check the console for more information.",
     }).showToast();
+  } else if (nextPost === undefined){
+    // A page load or some other event is occurring that will call this function again.
+    return;
   } else {
     const textareaElement = document.getElementById(
       "messageText"
@@ -113,6 +116,16 @@ function main(): void {
   }
 
   parentContainer.insertBefore(button, cancelButton);
+  const urlParams = new URLSearchParams(document.location.search);
+  if (urlParams.has("_calculatePostIdRunOnPageLoad")) {
+    const title = document.querySelector('title')!.text;
+    const url = new URL(document.location.href);
+    const searchParams = url.searchParams;
+    searchParams.delete("_calculatePostIdRunOnPageLoad");
+    url.search = searchParams.toString();
+    history.replaceState(null, title, url.href);
+    handleGenerateNextPost();
+  }
 }
 
 main();
