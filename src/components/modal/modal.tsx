@@ -12,7 +12,7 @@ export default function Modal(props: ModalProps) {
     <div class={modalStyles.modal}>
       <div class={modalStyles.content}>
         <div style="display: flex; justify-content: space-between;">
-          <div>{props.header}</div>
+          <span>{typeof props.header === "string" ? <h1>props.header</h1> : props.header}</span>
           <span class={modalStyles.close}>&times;</span>
         </div>
         {props.dividingLine ? <hr /> : null}
