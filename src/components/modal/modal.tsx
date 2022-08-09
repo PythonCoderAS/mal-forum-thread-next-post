@@ -3,7 +3,7 @@ import modalStyles from "./modal.module.css";
 
 export interface ModalProps {
   header: string | SimpleTSX.Element;
-  children?: SimpleTSX.Element | SimpleTSX.Element[] | string | number;
+  body: SimpleTSX.Element | SimpleTSX.Element[] | string | number;
   dividingLine?: boolean;
 }
 
@@ -16,7 +16,7 @@ export default function Modal(props: ModalProps) {
           <span class={modalStyles.close}>&times;</span>
         </div>
         {props.dividingLine ? <hr /> : null}
-        <div>{props.children}</div>
+        <div>{props.body}</div>
       </div>
     </div>
   );

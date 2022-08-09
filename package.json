@@ -1,6 +1,6 @@
 {
   "name": "mal-forum-thread-next-post",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "A userscript for determining the next post in a counting game on the MyAnimeList forum games board.",
   "type": "commonjs",
   "private": true,

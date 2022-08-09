@@ -3,8 +3,8 @@ import * as SimpleTSX from "simple-tsx";
 
 export default function DemoModal() {
   const header = <strong>Demo Modal</strong>;
-  return (
-    <Modal header={header} dividingLine={true}>
+  const children = (
+    <div>
       <p>This is a demo modal.</p>
       <p>It has a header, a dividing line, and some content.</p>
       <ul>
@@ -12,6 +12,9 @@ export default function DemoModal() {
         <li>It has a header.</li>
         <li>It has some lists.</li>
       </ul>
-    </Modal>
+    </div>
+  )
+  return (
+    <Modal header={header} dividingLine={true} body={children} />
   );
 }
