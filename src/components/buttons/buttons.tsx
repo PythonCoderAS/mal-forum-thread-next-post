@@ -1,6 +1,6 @@
 import * as SimpleTSX from "simple-tsx";
 import { clickHandler as calculateNextPostClickHandler } from "../../calculateNextPost";
-import { default as debugClickHandler } from "../../debug";
+import { generateOptions } from "../../options";
 
 export default function Buttons() {
   return (
@@ -8,8 +8,8 @@ export default function Buttons() {
       <button class="btn-topic-normal" onclick={calculateNextPostClickHandler}>
         Calculate Next Post
       </button>
-      <button class="btn-topic-normal inverse" onclick={debugClickHandler}>
-        Debug
+      <button class="btn-topic-normal inverse" onclick={generateOptions}>
+        Options
       </button>
     </div>
   );

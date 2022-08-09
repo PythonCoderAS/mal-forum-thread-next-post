@@ -6,12 +6,6 @@ import Buttons from "./components/buttons/buttons";
 import { clickHandler } from "./calculateNextPost";
 
 function main(): void {
-  /*  Const button = document.createElement("button");
-    button.type = "button";
-    button.classList.add("btn-topic-normal");
-    button.addEventListener("click", clickHandler);
-    button.innerText = "Calculate Next Post"; */
-  // const button = <button>Calculate Next Post</button>;
   const buttons: Element = Buttons();
   const cancelButton = document.getElementById(
     "clearQuickReply"
