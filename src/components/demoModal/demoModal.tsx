@@ -13,8 +13,6 @@ export default function DemoModal() {
         <li>It has some lists.</li>
       </ul>
     </div>
-  )
-  return (
-    <Modal header={header} dividingLine={true} body={children} />
   );
+  return <Modal header={header} dividingLine={true} body={children} />;
 }
