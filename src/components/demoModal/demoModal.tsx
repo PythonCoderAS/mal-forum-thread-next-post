@@ -2,7 +2,7 @@ import Modal from "../modal/modal";
 import * as SimpleTSX from "simple-tsx";
 
 export default function DemoModal() {
-  const header = <strong>Demo Modal</strong>;
+  const header = "Demo Modal";
   const children = (
     <div>
       <p>This is a demo modal.</p>
