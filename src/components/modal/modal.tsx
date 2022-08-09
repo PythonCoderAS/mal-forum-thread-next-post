@@ -11,10 +11,10 @@ export default function Modal(props: ModalProps) {
   return (
     <div class={modalStyles.modal}>
       <div class={modalStyles.content}>
-        <div style="display: flex; justify-content: space-between;">
+        <div class={modalStyles.header}>
           <span>
             {typeof props.header === "string" ? (
-              <h1>props.header</h1>
+              <span class={modalStyles.stringHeader}>{props.header}</span>
             ) : (
               props.header
             )}
