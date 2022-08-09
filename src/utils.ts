@@ -218,8 +218,9 @@ export function firstNumberLatestPostFormula(
 }
 
 export async function mountModal(modal: Element) {
+  const base = document.querySelector("#myamimelist") as HTMLDivElement;
   modal.element.querySelector("span")!.addEventListener("click", function () {
-    document.body.removeChild(this.parentElement!.parentElement!);
+    base.removeChild(this.parentElement!.parentElement!);
   });
-  appendElementLeft(document.body, modal);
+  appendElementLeft(base, modal);
 }
