@@ -23,6 +23,6 @@ module.exports = {
     path: path.resolve(__dirname, "dist"),
   },
   optimization: {
-    minimize: true
-  }
+    minimize: true,
+  },
 };

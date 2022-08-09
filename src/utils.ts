@@ -1,4 +1,6 @@
+// eslint-disable-next-line max-classes-per-file
 import * as toastify from "toastify-js";
+import { Element, appendElementLeft } from "simple-tsx";
 
 import * as postMappings from "./postMappings.json";
 import { PostMappingTopicData, TopicIDReturn } from "./types";
@@ -89,7 +91,9 @@ export function goToLatestPage(): boolean {
 }
 
 export class ForumPostAuthor {
+  // eslint-disable-next-line no-use-before-define
   public post: ForumPost;
+
   constructor(post: ForumPost) {
     this.post = post;
   }
@@ -106,10 +110,13 @@ export class ForumPostAuthor {
   }
 
   getTitle(): string | null {
-    const node = this.post.containerNode.querySelector<HTMLLinkElement>('a[href^="/about.php?go=team"]')
+    const node = this.post.containerNode.querySelector<HTMLLinkElement>(
+      'a[href^="/about.php?go=team"]'
+    );
     if (!node) {
       return null;
     }
+
     return node.innerText || null;
   }
 
@@ -120,11 +127,12 @@ export class ForumPostAuthor {
 
 export class ForumPost {
   public containerNode: HTMLDivElement;
-  private _author: ForumPostAuthor;
+
+  private authorInternal: ForumPostAuthor;
 
   constructor(containerNode: HTMLDivElement) {
     this.containerNode = containerNode;
-    this._author = new ForumPostAuthor(this);
+    this.authorInternal = new ForumPostAuthor(this);
   }
 
   getPostNumber(): number {
@@ -153,7 +161,7 @@ export class ForumPost {
   }
 
   public get author(): ForumPostAuthor {
-    return this._author;
+    return this.authorInternal;
   }
 
   getBodyNode(): HTMLDivElement {
@@ -173,7 +181,9 @@ export class ForumPost {
 }
 
 export function getForumPosts(): ForumPost[] {
-  const posts = document.querySelectorAll<HTMLDivElement>('div[id^="forumMsg"]');
+  const posts = document.querySelectorAll<HTMLDivElement>(
+    'div[id^="forumMsg"]'
+  );
   return Array.from(posts).map((node) => new ForumPost(node));
 }
 
@@ -205,4 +215,11 @@ export function firstNumberLatestPostFormula(
 
     return calculator(num);
   };
+}
+
+export async function mountModal(modal: Element) {
+  modal.element.querySelector("span")!.addEventListener("click", function () {
+    document.body.removeChild(this.parentElement!.parentElement!);
+  });
+  appendElementLeft(document.body, modal);
 }
