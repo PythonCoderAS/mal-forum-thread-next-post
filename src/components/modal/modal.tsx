@@ -11,8 +11,10 @@ export default function Modal(props: ModalProps) {
   return (
     <div class={modalStyles.modal}>
       <div class={modalStyles.content}>
-        <span class="close">&times;</span>
-        <div>{props.header}</div>
+        <div style="display: flex; justify-content: space-between;">
+          <div>{props.header}</div>
+          <span class={modalStyles.close}>&times;</span>
+        </div>
         {props.dividingLine ? <hr /> : null}
         <div>{props.children}</div>
       </div>
