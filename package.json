@@ -35,7 +35,7 @@
     "webpack-cli": "^4.10.0"
   },
   "dependencies": {
-    "simple-tsx": "^1.0.1",
+    "simple-tsx": "^1.0.2",
     "toastify-js": "^1.12.0"
   }
 }
