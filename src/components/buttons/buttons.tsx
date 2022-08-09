@@ -4,11 +4,11 @@ import { default as debugClickHandler } from "../../debug";
 
 export default function Buttons() {
   return (
-    <div>
-      <button class="btn-topic-normal" onclick={calculateNextPostClickHandler}>
+    <div style={{display: "inline"}}>
+      <button className="btn-topic-normal" onclick={calculateNextPostClickHandler}>
         Calculate Next Post
       </button>
-      <button class="btn-topic-normal inverse" onclick={debugClickHandler}>
+      <button className="btn-topic-normal inverse" onclick={debugClickHandler}>
         Debug
       </button>
     </div>
