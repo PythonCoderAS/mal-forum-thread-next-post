@@ -219,8 +219,8 @@ export function firstNumberLatestPostFormula(
 
 export async function mountModal(modal: Element) {
   const base = document.querySelector("#myanimelist") as HTMLDivElement;
-  modal.element.querySelector("span")!.addEventListener("click", function () {
-    base.removeChild(this.parentElement!.parentElement!);
+  modal.element.querySelector<HTMLSpanElement>("span[data-close]")!.addEventListener("click", function () {
+    base.removeChild(this.parentElement!.parentElement!.parentElement!);
   });
   appendElementLeft(base, modal);
 }

@@ -19,7 +19,7 @@ export default function Modal(props: ModalProps) {
               props.header
             )}
           </span>
-          <span class={modalStyles.close}>&times;</span>
+          <span data-close="1" class={modalStyles.close}>&times;</span>
         </div>
         {props.dividingLine ? <hr /> : null}
         <div>{props.body}</div>
