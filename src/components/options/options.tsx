@@ -28,6 +28,7 @@ export function Options(props: OptionsProps) {
       <label htmlFor="mal-forum-thread-next-post-auto-calculate">
         Automatically Calculate Next Post on Supported Threads <a href="#">?</a>
       </label>
+      <br />
       <input
         type="checkbox"
         id="mal-forum-thread-next-post-latest-page"
