@@ -1,6 +1,6 @@
 import * as SimpleTSX from "simple-tsx";
 import { clickHandler as calculateNextPostClickHandler } from "../../calculateNextPost";
-import { clickHandler as debugClickHandler } from "../../debug";
+import { default as debugClickHandler } from "../../debug";
 
 export default function Buttons() {
   return (
