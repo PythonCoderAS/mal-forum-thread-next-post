@@ -233,7 +233,7 @@ export async function mountModal(modal: Element) {
  * @param y The divisor.
  * @returns A 2-element array where the first element is the quotient and the second is the reminder.
  */
-export function divmod(x: number, y: number): [number, number]{
+export function divmod(x: number, y: number): [number, number] {
   return [Math.floor(x / y), x % y];
 }
 
@@ -244,14 +244,16 @@ export function divmod(x: number, y: number): [number, number]{
 export function numberToLetterBase26(num: number): string {
   let result = "";
   let digitsLeft = num;
-  if (num === 0){
-    return "A"
+  if (num === 0) {
+    return "A";
   }
+
   while (digitsLeft >= 26) {
     const [quotient, remainder] = divmod(digitsLeft, 26);
     result = String.fromCharCode(65 + remainder) + result;
     digitsLeft = quotient - 1;
   }
+
   result = String.fromCharCode(65 + digitsLeft) + result;
   return result;
 }
