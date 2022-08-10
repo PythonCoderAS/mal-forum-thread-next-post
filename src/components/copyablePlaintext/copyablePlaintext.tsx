@@ -1,5 +1,6 @@
 import Modal from "../modal/modal";
 import * as SimpleTSX from "simple-tsx";
+import copyablePlaintextStyles from "./copyablePlaintext.module.css";
 
 function copyText(this: HTMLButtonElement) {
   const textToCopy = this.parentElement!.querySelector("textarea")!.value;
@@ -15,7 +16,7 @@ export function CopyablePlaintext(props: CopyablePlaintextProps) {
   const heading = props.title ?? "Text";
   const body = (
     <div>
-      <textarea rows="10" value={props.text}>{props.text}</textarea>
+      <textarea rows="10" value={props.text} class={copyablePlaintextStyles.textarea}>{props.text}</textarea>
       <button type="button" class="btn-topic-normal" onclick={copyText}>
         Copy Text
       </button>
