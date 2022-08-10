@@ -13,7 +13,7 @@ function getSupportedThreads() {
     return;
   }
   const text = [...topicIdMap.keys()]
-    .sort()
+    .sort((a, b) => a - b)
     .map((threadid) => template.replace("{threadid}", String(threadid)))
     .join("\n");
   const modal = <CopyablePlaintext text={text} title="Supported Threads" />;
@@ -32,6 +32,7 @@ function getDuplicatedThreads() {
     ([_, indices]) => indices.length > 1
   );
   const text = duplicatedThreads
+    .sort(([a], [b]) => a - b)
     .map(
       ([threadid, indices]) =>
         `Thread at https://myanimelist.net/forum/?topicid=${threadid} has entires on 'data' indices ${indices.join(
