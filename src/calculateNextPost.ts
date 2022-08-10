@@ -2,9 +2,9 @@ import * as toastify from "toastify-js";
 
 import { TopicIDHandler } from "./types";
 import {
-  firstNumberLatestPostFormula,
+  firstNumberLatestPostFormula, numberToLetterBase26,
   postCountFormula,
-  useMod10Data,
+  useMod10Data
 } from "./utils";
 import handle1994574 from "./topicIDHandlers/1994574";
 import handle1890222 from "./topicIDHandlers/1890222";
@@ -45,6 +45,20 @@ const data: [number, TopicIDHandler][] = [
   [1890222, handle1890222],
   [71684, useMod10Data],
   [1985499, handle1985499],
+  [2033372, postCountFormula((replies) => String(replies - 1))],
+  [2001738, postCountFormula((replies) => String(((replies + 1) * 2) + 100))],
+  [449675, firstNumberLatestPostFormula((replies) => String(replies + 1))],
+  [449667, postCountFormula((replies) => String(1872 - replies - 1))],
+  [449621, postCountFormula((replies) => String(replies + 1 + 424))],
+  [2009788, postCountFormula((replies) => String((replies + 1) * 5 + 290))],
+  [2009947, postCountFormula((replies) => numberToLetterBase26(replies + 1 + 707))],
+  [1998278, postCountFormula((replies) => String(replies + 1))],
+  [1998284, postCountFormula((replies) => String(79999 - replies - 1))],
+  [1702862, postCountFormula((replies) => String(replies + 1 + 60))],
+  [1954916, postCountFormula((replies) => String(replies + 1 + 101))],
+  [2029541, postCountFormula((replies) => String(1009 - replies - 1))],
+  [2029535, postCountFormula((replies) => String(replies + 1))],
+  [2029530, postCountFormula((replies) => String(100002 - replies - 1))],
 ];
 
 const topicIdMap: Map<number, TopicIDHandler> = new Map(data);
