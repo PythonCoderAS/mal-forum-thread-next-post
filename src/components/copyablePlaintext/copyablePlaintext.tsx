@@ -16,7 +16,13 @@ export function CopyablePlaintext(props: CopyablePlaintextProps) {
   const heading = props.title ?? "Text";
   const body = (
     <div>
-      <textarea rows="10" value={props.text} class={copyablePlaintextStyles.textarea}>{props.text}</textarea>
+      <textarea
+        rows="10"
+        value={props.text}
+        class={copyablePlaintextStyles.textarea}
+      >
+        {props.text}
+      </textarea>
       <button type="button" class="btn-topic-normal" onclick={copyText}>
         Copy Text
       </button>
