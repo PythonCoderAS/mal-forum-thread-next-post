@@ -1,4 +1,5 @@
 import * as SimpleTSX from "simple-tsx";
+
 import { clickHandler as calculateNextPostClickHandler } from "../../calculateNextPost";
 import { generateOptions } from "../../options";
 

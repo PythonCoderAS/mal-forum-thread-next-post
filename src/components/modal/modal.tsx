@@ -1,4 +1,5 @@
 import * as SimpleTSX from "simple-tsx";
+
 import modalStyles from "./modal.module.css";
 
 export interface ModalProps {

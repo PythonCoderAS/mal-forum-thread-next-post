@@ -1,5 +1,8 @@
 import * as toastify from "toastify-js";
 
+import handle1890222 from "./topicIDHandlers/1890222";
+import handle1985499 from "./topicIDHandlers/1985499";
+import handle1994574 from "./topicIDHandlers/1994574";
 import { TopicIDHandler } from "./types";
 import {
   firstNumberLatestPostFormula,
@@ -7,9 +10,6 @@ import {
   postCountFormula,
   useMod10Data,
 } from "./utils";
-import handle1994574 from "./topicIDHandlers/1994574";
-import handle1890222 from "./topicIDHandlers/1890222";
-import handle1985499 from "./topicIDHandlers/1985499";
 
 export const data: [number, TopicIDHandler][] = [
   [1889851, postCountFormula((replies) => String((replies % 10) + 1))],

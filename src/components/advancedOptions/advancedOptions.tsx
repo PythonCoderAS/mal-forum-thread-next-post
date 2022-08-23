@@ -1,8 +1,9 @@
 import * as SimpleTSX from "simple-tsx";
-import advancedOptionsStyles from "./advancedOptions.module.css";
+
 import { data as threadData, topicIdMap } from "../../calculateNextPost";
-import { CopyablePlaintext } from "../copyablePlaintext/copyablePlaintext";
 import { mountModal } from "../../utils";
+import { CopyablePlaintext } from "../copyablePlaintext/copyablePlaintext";
+import advancedOptionsStyles from "./advancedOptions.module.css";
 
 function getSupportedThreads() {
   const template = prompt(

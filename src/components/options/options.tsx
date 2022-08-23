@@ -1,7 +1,8 @@
-import Modal from "../modal/modal";
 import * as SimpleTSX from "simple-tsx";
+
 import { submitOptions } from "../../options";
 import AdvancedOptions from "../advancedOptions/advancedOptions";
+import Modal from "../modal/modal";
 
 export interface OptionsProps {
   autoCalculateOnSupportedThreads: boolean;

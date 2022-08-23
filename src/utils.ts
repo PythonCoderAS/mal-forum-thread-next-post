@@ -1,6 +1,6 @@
 // eslint-disable-next-line max-classes-per-file
-import * as toastify from "toastify-js";
 import { Element, appendElementLeft } from "simple-tsx";
+import * as toastify from "toastify-js";
 
 import * as postMappings from "./postMappings.json";
 import { PostMappingTopicData, TopicIDReturn } from "./types";

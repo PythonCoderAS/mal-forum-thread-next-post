@@ -1,9 +1,9 @@
+import { Element } from "simple-tsx";
 import * as toastify from "toastify-js";
 import "toastify-js/src/toastify.css";
-import { Element } from "simple-tsx";
 
-import Buttons from "./components/buttons/buttons";
 import { clickHandler } from "./calculateNextPost";
+import Buttons from "./components/buttons/buttons";
 
 function main(): void {
   const buttons: Element = Buttons();

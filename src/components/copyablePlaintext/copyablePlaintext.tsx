@@ -1,5 +1,6 @@
-import Modal from "../modal/modal";
 import * as SimpleTSX from "simple-tsx";
+
+import Modal from "../modal/modal";
 import copyablePlaintextStyles from "./copyablePlaintext.module.css";
 
 function copyText(this: HTMLButtonElement) {
