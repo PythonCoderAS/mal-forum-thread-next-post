@@ -1,6 +1,6 @@
 {
   "name": "mal-forum-thread-next-post",
-  "version": "1.6.4",
+  "version": "1.6.5",
   "description": "A userscript for determining the next post in a counting game on the MyAnimeList forum games board.",
   "type": "commonjs",
   "private": true,
@@ -22,6 +22,7 @@
   "homepage": "https://github.com/PythonCoderAS/mal-forum-thread-next-post#readme",
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^3.3.0",
+    "@types/greasemonkey": "^4.0.3",
     "@types/toastify-js": "^1.11.1",
     "css-loader": "^6.7.1",
     "eslint": "^8.22.0",

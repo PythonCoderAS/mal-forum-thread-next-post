@@ -4,8 +4,8 @@ console.log(
 // @name         mal-forum-thread-next-post
 // @author       PythonCoderAS
 // @description  A userscript for determining the next post in a counting game on the MyAnimeList forum games board.
-// @grant        GM_getValue
-// @grant        GM_setValue
+// @grant        GM.getValue
+// @grant        GM.setValue
 // @homepage     https://github.com/PythonCoderAS/mal-forum-thread-next-post#readme
 // @homepageURL  https://github.com/PythonCoderAS/mal-forum-thread-next-post#readme
 // @match        https://myanimelist.net/forum/?topicid=*

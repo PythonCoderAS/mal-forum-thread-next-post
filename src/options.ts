@@ -6,8 +6,8 @@ import {
 } from "./components/options/options";
 import { mountModal } from "./utils";
 
-export function getOptionsFromStorage(): OptionsProps {
-  return GM_getValue("options", defaultOptions);
+export async function getOptionsFromStorage(): Promise<OptionsProps> {
+  return JSON.parse((await GM.getValue("options", JSON.stringify(defaultOptions))) as string);
 }
 
 export function getOptionsFromForm(): OptionsProps {
@@ -21,13 +21,13 @@ export function getOptionsFromForm(): OptionsProps {
   };
 }
 
-export function submitOptions(): void {
+export async function submitOptions(): Promise<void> {
   const options = getOptionsFromForm();
-  GM_setValue("mal-forum-thread-next-post-options", options);
+  await GM.setValue("mal-forum-thread-next-post-options", JSON.stringify(options));
 }
 
-export function generateOptions(): void {
-  const options = getOptionsFromStorage();
+export async function generateOptions(): Promise<void> {
+  const options = await getOptionsFromStorage();
   const modal = Options(options);
   mountModal(modal);
 }
