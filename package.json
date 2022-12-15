@@ -24,7 +24,7 @@
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "@types/greasemonkey": "^4.0.3",
     "@types/toastify-js": "^1.11.1",
-    "css-loader": "^6.7.2",
+    "css-loader": "^6.7.3",
     "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-pythoncoderas-combo": "^1.1.3",
